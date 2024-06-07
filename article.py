@@ -1,22 +1,15 @@
-class Article:
-    def __init__(self, author, magazine, title):
-        
-        if not isinstance(title, str) or len(title) < 5 or len(title) > 50:
-            raise ValueError("Title must be a string between 5 and 50 characters.")
-        self._author = author
-        self._magazine = magazine
-        self._title = title
+all = []
 
-    @property
-    def title(self):
+
+    def _init_(self, author, magazine, title):
+        self.author = author
+        self.magazine = magazine
+        self.title = title
+        Article.all.append(self)
+    def get_title(self):
         return self._title
-
-    
-    @property
-    def author(self):
-        return self._author
-
-    
-    @property
-    def magazine(self):
-        return self._magazine
+    def set_title(self, title):
+        if type(title) is not str or len(title) == 0:
+            return
+        self._title = title
+    title = property(get_title, set_titl
